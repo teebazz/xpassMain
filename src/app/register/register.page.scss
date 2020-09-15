@@ -1,0 +1,43 @@
+.h_header{
+    font-size: 3rem;
+}
+
+.line-input {
+    margin-bottom: 0!important;
+    background: transparent !important ;
+    ion-item {
+        background: transparent !important;
+        --border-color: transparent!important;
+        --highlight-height: 0;
+        border: 1px solid #dedede;
+        border-radius: 4px;
+        &.item-has-focus {
+            border: 1px solid var(--ion-color-primary);
+        }
+        ion-label {
+            background: transparent !important;
+            color: white !important;
+            font-weight: 300;
+            font-size: 1rem!important;
+        }
+    }
+  }
+
+// .m10{
+//     --padding-top: 20px !important;
+//     --padding-bottom: 20px !important;
+//     --background: rgb(177, 0, 3) !important;
+// }
+
+.h_link{
+    font-weight: bold !important;
+}
+
+.h_header{
+    font-size: 35px !important;
+}
+
+.m_item{
+    --background: transparent !important;
+    --color : white;
+}

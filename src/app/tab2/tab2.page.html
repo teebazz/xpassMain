@@ -1,17 +1,70 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      Tab 2
+      Pay Bills
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content class="notifications-content">
+  <ng-container *ngIf='service_categories' >
+    <div *ngFor="let service_category of service_categories">
+      <ion-item-group *ngIf="service_category.services.length  > 0">
+        <ion-item-divider sticky>
+          <ion-label>{{service_category.name}}</ion-label>
+        </ion-item-divider>
+        <ion-item class="notification-item" lines="none" *ngFor="let inservice of service_category.services">
+          <ion-row class="notification-item-wrapper" (click)='gotoService(inservice)'>
+            <ion-col size="2">
+              <img class="notification-image" [src]="inservice.image_url">
+            </ion-col>
+            <ion-col class="details-wrapper">
+              <h2 class="details-name">{{inservice.name}}</h2>
+            </ion-col>
+          </ion-row>
+        </ion-item>      
+      </ion-item-group>
+    </div>
+  </ng-container>
+    <ng-container *ngIf='!service_categories'>
+      <ion-item class="notification-item" lines="none">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+    <!-- <ion-item-group>
+      <ion-item-divider sticky>
+        <ion-label>Yesterday</ion-label>
+      </ion-item-divider>
+      <ion-item class="notification-item" lines="none" *ngFor="let notification of notifications.yesterday">
+        <ion-row class="notification-item-wrapper">
+          <ion-col size="2">
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+              <app-image-shell class="notification-image" [src]="notification.image" [alt]="'user image'"></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="details-wrapper">
+            <h2 class="details-name">{{ notification.name }}</h2>
+            <p class="details-description">{{ notification.message }}</p>
+          </ion-col>
+          <ion-col size="2" class="date-wrapper">
+            <h3 class="notification-date">{{ notification.date }}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item-group> -->  
 </ion-content>

@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-title>
+      <ion-text color="medium">
+        <h1>Welcome</h1>
+      </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" color="medium" class="ion-padding">
+  <h1 class="h_header">Welcome to Gidalo</h1>
+  <p>Sign in to access your account</p>
+  <form #form="ngForm" (ngSubmit)="this.login(form)" method="POST">
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="line-input">
+          <ion-item class="m_item">
+            <ion-label position="stacked">Email Adress</ion-label>
+            <ion-input [(ngModel)]="email" name="username" type="text" clearInput class="ion-border-bottom" required
+              #username="ngModel"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <ion-row>
+          <ion-col size="10" style="padding: 0;">
+            <ion-list class="line-input">
+              <ion-item class="m_item">
+                <ion-label position="stacked">Password </ion-label>
+                <ion-input ngModel name="password" type="password" clearInput class="ion-border-bottom" required
+                  #password="ngModel">
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="2" class="finger" (click)="fingerLogin()">
+            <ion-icon class="icon" name="finger-print-outline"></ion-icon>
+          </ion-col>
+        </ion-row>        
+      </ion-col>
+      <ion-col size="12">
+        <!-- <ion-item> -->
+        <ion-button expand="block" type="submit" class="m10">Login <ion-icon name="arrow-right"></ion-icon>
+        </ion-button>
+        <!-- </ion-item> -->
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p>New Customer? <span class="h_link" routerLink="/register">Register</span> </p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p> <span class="h_link" routerLink="/reset-password-one">Forget Password ?</span> </p>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

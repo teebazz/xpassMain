@@ -1,17 +1,133 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      Tab 3
+      Send Money
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <app-explore-container name="Tab 3 page"></app-explore-container> -->
+  <ng-container *ngIf="bankList">
+    <form #createForm="ngForm" [formGroup]="formPay" id="createForm" (ngSubmit)="this.initateTransaction(createForm)" method="POST">
+      <ion-row>
+        <ion-col size="12" *ngIf="bankList.length > 0">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label position="stacked">Select Recipient Bank</ion-label>
+              <!-- <ion-select  name="bank_id" formControlName="bank_id" [(ngModel)] = "bank_id" interface = "popover"   required>
+                <ion-select-option *ngFor = "let bank of bankList; let i = index" [value]="bank.id">{{bank.bank_name}}</ion-select-option>
+              </ion-select> -->
+              <ionic-selectable
+                formControlName="bank_id"
+                [(ngModel)]="bank_id"
+                [items]="bankList"
+                itemValueField="id"
+                itemTextField="bank_name"
+                [canSearch]="true"
+                #portComponent
+                >
+                <ng-template ionicSelectableHeaderTemplate>
+                  <ion-toolbar color="medium">
+                    <ion-buttons>  
+                      <ion-icon name="close-circle" class="close_btn" style="font-size: 34px;" (click)="portComponent.close()"></ion-icon>                    
+                    </ion-buttons>
+                    <ion-title>
+                      Select Recipient Bank
+                    </ion-title>
+                  </ion-toolbar>
+                </ng-template>
+              </ionic-selectable>
+            </ion-item>
+            <ion-button shape="round" fill="outline" size="small" class="close_btn">Select From Beneficiary
+              <ionic-selectable
+                formControlName="recipient_id"
+                [(ngModel)]="recipient_id"
+                [items]="bankRecipientList"
+                itemValueField="id"
+                itemTextField="recipient"
+                [canSearch]="true"
+                #portComponentC
+                (onChange) = "putBeneficiary($event)"
+                >
+                <ng-template ionicSelectableHeaderTemplate>
+                  <ion-toolbar color="medium">
+                    <ion-buttons>  
+                      <ion-icon name="close-circle" class="close_btn" style="font-size: 34px;" (click)="portComponentC.close()"></ion-icon>                    
+                    </ion-buttons>
+                    <ion-title>
+                      Select Bank Beneficiary
+                    </ion-title>
+                  </ion-toolbar>
+                </ng-template>
+              </ionic-selectable>
+
+            </ion-button>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label position="stacked">Account Number</ion-label>
+              <ion-input [(ngModel)] = "account_number" (ionChange) ="getAccount($event)" type="text" name="account_number" formControlName="account_number" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <span class="gt_name" *ngIf="gt_show == true"><i>Getting Account Details....</i></span>
+        </ion-col>
+        <ion-col size="12">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label position="stacked">Account Name</ion-label>
+              <ion-input [(ngModel)] = "account_name" type="text" name="account_name" formControlName="account_name" readonly></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label position="stacked">Amount</ion-label>
+              <ion-input  type="text" formControlName="amount" [readonly]="amountReadOnly ==  true"  name = "amount" id="amount" [(ngModel)] = "amount"  required  clearInput></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12">
+          <ion-list>
+            <ion-item>
+              <ion-label>Save Beneficiary</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="save_beneficiary" formControlName="save_beneficiary"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12">
+          <!-- <ion-item> -->
+          <ion-button expand="block" type="submit" class="m10">Proceed<ion-icon name="arrow-right"></ion-icon>
+          </ion-button>
+          <!-- </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="!bankList">
+    <ion-item href="#">
+      <ion-thumbnail >
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label class="latest_transaction_item_name">
+        <div>
+          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </div>
+      </ion-label>              
+    </ion-item>
+  </ng-container>
+
 </ion-content>

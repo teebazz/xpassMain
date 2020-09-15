@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text>
+        <!-- <h1>User Menu</h1> -->
+      </ion-text>      
+    </ion-title>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" slot="fixed" >
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img src="https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png" alt="">
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h3 class="playername">{{name}}</h3>
+        <ion-button shape="round" (click)="this.XpassService.getGidaloAccountNumber()" *ngIf="userDetails.account_number_setup == 'no'" fill="outline" size="small"  class="alter-background">Get Account Number</ion-button>
+        <h5 class="country" *ngIf="userDetails.account_number_setup == 'yes'">
+          Gidalo Account NO : {{userDetails.account_number}} <br>
+          Bank Name : Providus Bank
+        </h5>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="end" name="person-outline"></ion-icon>
+          <ion-label>Account Settings</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="swap-horizontal-outline" slot="end"></ion-icon>
+          <ion-label>Gidalo Transfer</ion-label>
+        </ion-item>
+        <ion-item (click)="gotoTransaction()">
+          <ion-icon slot="end" name="list-outline"></ion-icon>
+          <ion-label>Transactions</ion-label>
+        </ion-item>
+        <ion-item (click) = "pinSetup()">
+          <ion-icon slot="end" name="key-outline"></ion-icon>
+          <ion-label>Transaction Pin</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="end" name="key-outline"></ion-icon>
+          <ion-label>Change Password</ion-label>
+        </ion-item>
+        <ion-item (click) = "this.XpassService.logout()">
+          <ion-icon name="log-out-outline" slot="end" ></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

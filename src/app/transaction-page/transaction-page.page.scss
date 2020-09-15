@@ -1,0 +1,58 @@
+.service_img {
+    width: 50px;
+}
+.mark_success{
+    font-size: 4rem;  
+    background-color: white;  
+}
+
+.m_success{
+    color: green;
+}
+.m_failed{
+    color: red;
+}
+
+.mark_m{
+    position: absolute; 
+    top: 20px;
+    width: 100%;
+    z-index: 1000; 
+}
+.label_text{
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+.value_text{
+    font-size: 15px !important;
+}
+
+.details-name {
+    // margin-top: 0px !important;
+    margin-bottom: 5px !important;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    color: black;
+}
+
+.trans_content{
+    padding-top: 45px;
+    padding-bottom: 7px;  
+    position: relative;  
+    z-index: 0;
+}
+
+.latest_transaction{
+    padding-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 0.8rem !important;
+}
+
+
+
+ion-item{
+    --padding-start: 4px;
+}

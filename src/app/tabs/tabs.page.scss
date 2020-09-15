@@ -1,1 +1,13 @@
 
+ion-tab-button[aria-selected=true] {
+    // background-color: #ddd;
+    color:#fcb413;
+}
+
+.my-custom-class{
+    --width	: 200px !important;
+}
+
+ion-tab-button{
+    font-size: 10px !important;
+}

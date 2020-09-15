@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Transaction Detail
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-row>
+      <ion-col size="2">
+        <img [src]="transaction.image_url" class="service_img">
+      </ion-col>
+      <ion-col size="10">
+        <h3 class="details-name" [innerHtml]="transaction.title"></h3>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="trans_content"> 
+    <div class="ion-text-center mark_m">
+      <ion-icon class="mark_success m_success" *ngIf="transaction.status == 'success'" name="checkmark-circle-outline"></ion-icon>
+      <ion-icon class="mark_success m_failed" *ngIf="transaction.status == 'failed'" name="close-circle-outline"></ion-icon>
+    </div>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content class="latest_transaction">            
+            <div *ngFor="let transT of transaction.readable; let  i = index" >
+              <ion-item *ngIf="transT.display == true">
+                <ion-label>
+                  <ion-row>
+                    <ion-col size="5" class="label_text">
+                      {{transT.label}}
+                    </ion-col>
+                    <ion-col size="7" class="value_text" [innerHtml]="transT.value">
+                      
+                    </ion-col>
+                  </ion-row>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" *ngIf="transaction.transaction.status == 'initiated'">
+        <ion-button type="submit" expand="block" class="btn-primary-alt" (click)="presentAlertPrompt(transaction)">Proceed <ion-icon name="arrow-right"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

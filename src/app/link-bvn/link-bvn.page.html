@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Link BVN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form #createForm="ngForm" id="createForm" (ngSubmit)="this.verifyBVN(createForm)" method="POST">    
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="line-input">
+          <ion-item>
+            <ion-label position="stacked">BVN</ion-label>
+            <ion-input ngModel name="bvn" type="text" clearInput class="ion-border-bottom" required #bvn = "ngModel" ></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <ion-list class="line-input">
+          <ion-item>
+            <ion-label position="stacked">Date of birth</ion-label>
+            <ion-datetime displayFormat="DD-MMM-YYYY" ngModel name="date_of_birth" required #date_of_birth = "ngModel" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <!-- <ion-item> -->
+        <ion-button type="submit" expand="block" class="btn-primary-alt">Proceed <ion-icon name="arrow-right"></ion-icon>
+        </ion-button>
+        <!-- </ion-item> -->
+      </ion-col>
+    </ion-row>
+  </form>
+  <div>
+    <ion-title>Why we need your BVN?</ion-title>
+  </div>  
+</ion-content>

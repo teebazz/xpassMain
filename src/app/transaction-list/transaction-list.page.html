@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Transaction History
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="latestTransaction">
+      <ion-col size="12" *ngFor = "let latestT of latestTransaction">
+        <ion-card class="latest_transaction">
+          <ion-card-header class="latest_transaction_header">
+            <ion-card-subtitle>{{latestT.day}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content class="latest_transaction_inner">
+            <!-- <p *ngIf="latestTransactionMessage">{{latestTransactionMessage}}</p>  -->
+            <ng-container> 
+              <div *ngFor = "let trans of latestT.transactions">          
+                <ion-item (click)="gotoTransaction(trans)">
+                  <ion-thumbnail >
+                    <img [src]="trans.image_url">
+                  </ion-thumbnail>
+                  <ion-label class="latest_transaction_item_name">
+                    <div>
+                      {{trans.transaction.memo}}
+                    </div>
+                  </ion-label>              
+                </ion-item>
+              </div>
+            </ng-container>            
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row ngElse>
+      <ion-col size="12">
+        No Transactions yet.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

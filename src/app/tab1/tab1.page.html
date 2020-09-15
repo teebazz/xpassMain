@@ -1,17 +1,130 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-avatar class="home_img">
+      </ion-avatar>            
+    </ion-buttons>
+    <ion-title class="ion-text-center">Gidalo</ion-title>
+    <ion-buttons slot="end">
+      <strong> ₦{{customerWallet}} </strong> 
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center"><span class="dashboard_welcome">Welcome, {{name}}</span></ion-title>
+  </ion-toolbar>
+</ion-header> -->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div id="wallet" class="ion-padding">
+    <span>Welcome, <span> {{name}}</span></span>
+    <ion-row> 
+      <ion-col size="7" class="rm-p-left">
+        <span id="walletBalance">₦{{customerWallet}}</span>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button shape="round" (click)="gotoFundWallet()" fill="outline" class="close_btn" expand="block">Fund Wallet</ion-button> 
+      </ion-col>
+    </ion-row>
+    <p id="walletBalanceText">Available Balance</p>
+  </div>
+  <div class="btns">
+    <ion-grid>
+      <ion-row>         
+        <ion-col size="6">
+          <ion-card class="service_card">
+            <ion-card-content class="service_card_content" (click) = "gotoAirtime()">
+              <div class="service_icon alter-color"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+              <div class="service_title">Airtime & Data</div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>      
+        <ion-col size="6">
+          <ion-card class="service_card" (click) = "gotoBills()" >
+            <ion-card-content class="service_card_content">
+              <div class="service_icon alter-color"><ion-icon name="layers-outline"></ion-icon></div>
+              <div class="service_title">Pay Bills</div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="service_card" (click) = "gotoSendMoney()">
+            <ion-card-content class="service_card_content">
+              <div class="service_icon alter-color"><ion-icon name="share-outline"></ion-icon></div>
+              <div class="service_title">Send Money</div>
+            </ion-card-content>
+          </ion-card>          
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="service_card">
+            <ion-card-content class="service_card_content" >
+              <div class="service_icon alter-color"><ion-icon name="wallet-outline"></ion-icon></div>
+              <div class="service_title">More..</div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>            
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" *ngIf="bvn_status == 'none'">
+          <div routerLink="/link-bvn" style="padding: 10px; background-color: #B10003; font-size: 11px; color: white; border-radius: 5px;">
+            Your Transaction is limited. Click here to link your BVN  <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="12" *ngIf="pin_setup == 'no'">
+          <div routerLink="/pin-setup" style="padding: 10px; background-color: #B10003; font-size: 11px; color: white; border-radius: 5px;">
+          Please click here to setup a transaction PIN  <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card class="latest_transaction">
+            <ion-card-header class="latest_transaction_header">
+              <ion-card-subtitle>Latest Transactions</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content class="latest_transaction_inner">
+              <!-- <p *ngIf="latestTransactionMessage">{{latestTransactionMessage}}</p>  -->
+              <ng-container *ngIf="latestTransaction ">                 
+                <div *ngIf="latestTransaction.length > 0">
+                  <div *ngFor = "let latestT of latestTransaction">          
+                    <ion-item (click)="gotoTransaction(latestT)">
+                      <ion-thumbnail >
+                        <img [src]="latestT.image_url">
+                      </ion-thumbnail>
+                      <ion-label class="latest_transaction_item_name">
+                        <div>
+                          {{latestT.transaction.memo}}
+                        </div>
+                      </ion-label>              
+                    </ion-item>
+                  </div>                  
+                </div>  
+                <!-- <div ngElse>
+                  <strong>No Transactions yet.</strong>
+                </div>               -->
+              </ng-container>
+              <ng-container *ngIf="!latestTransaction">
+                <ion-item href="#">
+                  <ion-thumbnail >
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-label class="latest_transaction_item_name">
+                    <div>
+                      <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                    </div>
+                  </ion-label>              
+                </ion-item>
+              </ng-container>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12">
+          <ion-img src="../../assets/images/dstv.jpg"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

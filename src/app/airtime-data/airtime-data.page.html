@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Airtime and Data
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-segment value="all" 
+    scrollable="true"
+    [(ngModel)]="segmentModel" 
+    (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="airtime">
+        <ion-label>Airtime</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="data">
+        <ion-label>Data</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div  *ngIf='artimeList'>
+  <div *ngFor="let airtime_dt of artimeList">
+    <div *ngIf=" segmentModel == airtime_dt.slug" class="notifications-content">
+      <ng-container>
+        <div>
+          <ion-item-group *ngIf="airtime_dt.services.length  > 0">
+            <!-- <ion-item-divider sticky>
+              <ion-label>{{airtime_dt.name}}</ion-label>
+            </ion-item-divider> -->
+
+            <ion-item class="notification-item" lines="none" *ngFor="let inservice of airtime_dt.services">
+              <ion-row class="notification-item-wrapper" (click)='gotoService(inservice)'>
+                <ion-col size="2">
+                  <img class="notification-image" [src]="inservice.image_url">
+                </ion-col>
+                <ion-col class="details-wrapper">
+                  <h2 class="details-name">{{inservice.name}}</h2>
+                </ion-col>
+              </ion-row>
+            </ion-item>      
+          </ion-item-group>
+        </div>
+      </ng-container>
+    </div>
+  </div>    
+</div>
+<ng-container *ngIf='!artimeList'>
+  <ion-item class="notification-item" lines="none">
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ng-container>
+
+</ion-content>
