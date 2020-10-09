@@ -12,7 +12,7 @@
   <form #createForm="ngForm" [formGroup]="formPay" id="createForm" (ngSubmit)="this.createPin(createForm)" method="POST" *ngIf="pin_setup == 'no'">    
     <ion-row>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">New Pin</ion-label>
             <ion-input [(ngModel)]="pin" name="pin" formControlName="pin" type="text" clearInput class="ion-border-bottom" required ></ion-input>
@@ -20,7 +20,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">Confirm New Pin</ion-label>
             <ion-input [(ngModel)] = "pin_confirmation"  formControlName="pin_confirmation" name="pin_confirmation" type="text" clearInput class="ion-border-bottom" required ></ion-input>
@@ -38,7 +38,7 @@
   <form #createForm="ngForm" [formGroup]="formPay" id="createForm" (ngSubmit)="this.updatePin(createForm)" method="POST" *ngIf="pin_setup == 'yes'">    
     <ion-row>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">Old Pin</ion-label>
             <ion-input [(ngModel)]="old_pin" name="old_pin" formControlName="old_pin" type="text" clearInput class="ion-border-bottom" required ></ion-input>
@@ -46,7 +46,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">New Pin</ion-label>
             <ion-input [(ngModel)]="pin" name="pin" formControlName="pin" type="text" clearInput class="ion-border-bottom" required ></ion-input>
@@ -54,7 +54,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">Confirm New Pin</ion-label>
             <ion-input [(ngModel)] = "pin_confirmation"  formControlName="pin_confirmation" name="pin_confirmation" type="text" clearInput class="ion-border-bottom" required ></ion-input>

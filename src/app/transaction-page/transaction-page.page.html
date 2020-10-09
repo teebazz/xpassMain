@@ -19,8 +19,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid class="trans_content"> 
-    <div class="ion-text-center mark_m">
+  <ion-grid class="trans_content" mode="md"> 
+    <div class="ion-text-center mark_m"> 
       <ion-icon class="mark_success m_success" *ngIf="transaction.status == 'success'" name="checkmark-circle-outline"></ion-icon>
       <ion-icon class="mark_success m_failed" *ngIf="transaction.status == 'failed'" name="close-circle-outline"></ion-icon>
     </div>

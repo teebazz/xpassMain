@@ -11,12 +11,18 @@ import {UtilitiesService} from '../services/utilities.service'
   styleUrls: ['./fund-wallet.page.scss'],
 })
 export class FundWalletPage implements OnInit {
-
+  name : any;
+  userDetails : any;
   constructor(public xpassService: XpassService,private loadingController: LoadingController,public navCtrl : NavController,private iab: InAppBrowser, private router : Router,private UtilitiesService : UtilitiesService) {
 
   }
 
   ngOnInit() {
+    this.xpassService.loginData.subscribe((res : any)=>{    
+      console.log(res);     
+      this.name = res.name;
+      this.userDetails = res;
+    });
   }
   initateWalletfund(form){
     let body = form.value;

@@ -22,6 +22,11 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { NgxCurrencyModule } from "ngx-currency";
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,16 +40,19 @@ import { IonicSelectableModule } from 'ionic-selectable';
     HttpClientJsonpModule,
     IonicSelectableModule,
     Angular4PaystackModule.forRoot(''),
+    NgxCurrencyModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Clipboard,
     Contacts,
     File,
     FingerprintAIO,
     FileTransfer,
     PDFGenerator,
     TouchID,
+    SocialSharing,
     FileOpener,
     Network,
     InAppBrowser,

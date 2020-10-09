@@ -47,7 +47,7 @@ export class XpassService {
     this.loginData.next({});
     this.token = false;
     localStorage.removeItem("login");
-    localStorage.removeItem("log_credentials");
+    // localStorage.removeItem("log_credentials");
     this.navCtrl.navigateRoot("/login");
     this.latestTransactionList.next([]);
     this.myData.next('...');
@@ -92,10 +92,28 @@ export class XpassService {
     return this.http.post<any>( `${this.base_url}user/update-pin`, body ,{headers});
   }
 
+  updatePassword(body) {
+    const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
+    console.log(headers);    
+    return this.http.post<any>( `${this.base_url}user/update-password`, body ,{headers});
+  }
+
   initiateServiceTransaction(body) {
     const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
     console.log(headers);    
     return this.http.post<any>( `${this.base_url}service/create-transaction`, body ,{headers});
+  }
+
+  initiateGidaloTransfer(body) {
+    const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
+    console.log(headers);    
+    return this.http.post<any>( `${this.base_url}transaction/transfer-to-gidalo`, body ,{headers});
+  }
+
+  finalizeGidaloTransfer(body) {
+    const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
+    console.log(headers);    
+    return this.http.post<any>( `${this.base_url}transaction/finalize-transfer-to-gidalo`, body ,{headers});
   }
 
   initiateFundsTransfer(body) {
@@ -184,6 +202,12 @@ export class XpassService {
     return this.http.post<any>( `${this.base_url}transfer/get-bank-account-details`, body ,{headers});
   }
 
+  updateProfileRemote(body) {
+    const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
+    console.log(headers);    
+    return this.http.post<any>( `${this.base_url}user/update-profile`, body ,{headers});
+  }
+
 
   generateReceipt(body) {
     const headers = new HttpHeaders( { 'Authorization': `Bearer ${this.token}`});
@@ -195,6 +219,7 @@ export class XpassService {
     localStorage.setItem("login", JSON.stringify(userInstance));
     this.loginData.next(userInstance);
   }
+
 
   getGidaloAccountNumber() {
     this.UtilitiesService.presentLoading('Generating Account Number');

@@ -54,10 +54,10 @@
           </ion-card>          
         </ion-col>
         <ion-col size="6">
-          <ion-card class="service_card">
+          <ion-card class="service_card" (click) = "gotoShareEarn()">
             <ion-card-content class="service_card_content" >
-              <div class="service_icon alter-color"><ion-icon name="wallet-outline"></ion-icon></div>
-              <div class="service_title">More..</div>
+              <div class="service_icon alter-color"><ion-icon name="share-social-outline"></ion-icon></div>
+              <div class="service_title">Share & Earn</div>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -89,7 +89,7 @@
               <ng-container *ngIf="latestTransaction ">                 
                 <div *ngIf="latestTransaction.length > 0">
                   <div *ngFor = "let latestT of latestTransaction">          
-                    <ion-item (click)="gotoTransaction(latestT)">
+                    <ion-item (click)="gotoTransaction(latestT)" mode="md" >
                       <ion-thumbnail >
                         <img [src]="latestT.image_url">
                       </ion-thumbnail>

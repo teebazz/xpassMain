@@ -32,4 +32,15 @@ export class Tab4Page implements OnInit {
     this.router.navigate(['pin-setup']);
   }
 
+  gotoAccount(){
+    this.router.navigate(['account-settings']);
+  }
+
+  passwordChange(){
+    this.router.navigate(['change-password']);
+  }
+  gotoGidaloTransfer(){
+    this.router.navigate(['gidalo-transfer']);
+  }
+
 }

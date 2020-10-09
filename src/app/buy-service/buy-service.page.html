@@ -23,15 +23,16 @@
   <form #createForm="ngForm" [formGroup]="formPay" id="createForm" (ngSubmit)="this.initateTransaction(createForm)" method="POST">
     <ion-row>
       <ion-col size="12" *ngIf="service.variation_list.length > 0">
-        <ion-list class="line-input" *ngIf="service.variation_list.length < 5">
+        <!-- <ion-list class="line-input" *ngIf="service.variation_list.length < 5">
           <ion-item>
             <ion-label position="stacked">{{service.variation_label}}</ion-label>
             <ion-select  name="variation_code" formControlName="variation_code" [(ngModel)] = "variation_code" interface = "popover" (ionChange) = "getPrice($event)"  required>
               <ion-select-option *ngFor = "let variation of service.variation_list; let i = index" [value]="variation.id">{{variation.name}}</ion-select-option>
             </ion-select>
           </ion-item>
-        </ion-list>
-        <ion-list class="line-input" *ngIf="service.variation_list.length > 5">
+        </ion-list> -->
+        <ion-list class="line-input" mode="md">
+        <!-- <ion-list class="line-input" *ngIf="service.variation_list.length > 5"> -->
           <ion-item>
             <ion-label position="stacked">{{service.variation_label}}</ion-label>
             <!-- <ion-select  name="variation_code" formControlName="variation_code" [(ngModel)] = "variation_code" interface = "popover" (ionChange) = "getPrice($event)"  required>
@@ -44,13 +45,23 @@
               itemValueField="id"
               itemTextField="name"
               [canSearch]="true"
-              (onChange)="getPrice($event)">
+              (onChange)="getPrice($event)" #portComponent>
+              <ng-template ionicSelectableHeaderTemplate>
+                <ion-toolbar color="medium">
+                  <ion-buttons>  
+                    <ion-icon name="close-circle" class="close_btn" style="font-size: 34px;" (click)="portComponent.close()"></ion-icon>                    
+                  </ion-buttons>
+                  <ion-title>
+                    Select {{service.variation_label}}
+                  </ion-title>
+                </ion-toolbar>
+              </ng-template>
             </ionic-selectable>
           </ion-item>
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
             <ion-label position="stacked">{{service.biller_identifier_name}}</ion-label>
             <ion-input [(ngModel)] = "biller_identifier" type="text" name="biller_identifier" formControlName="biller_identifier" required></ion-input>            
@@ -59,9 +70,9 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
-            <ion-label position="stacked">Amount</ion-label>
+            <ion-label position="stacked">Amount(₦)</ion-label>
             <ion-input  type="text" formControlName="amount" [readonly]="amountReadOnly ==  true"  name = "amount" id="amount" [(ngModel)] = "amount"  required  clearInput></ion-input>
           </ion-item>
         </ion-list>

@@ -40,6 +40,7 @@
                 </ion-col>
                 <ion-col class="details-wrapper">
                   <h2 class="details-name">{{inservice.name}}</h2>
+                  <span *ngIf="inservice.promo" class="promo">{{inservice.promo.amount}}% Off</span>
                 </ion-col>
               </ion-row>
             </ion-item>      

@@ -40,16 +40,16 @@ export class AppComponent {
 
   ngOnInit() {
     // this.navCtrl.navigateRoot("/test-paystack");
-    // this.navCtrl.navigateRoot("/login");
-    // this.navCtrl.navigateRoot("/transaction-confirm-page");
-    if(!localStorage.getItem("login")) {
-      this.navCtrl.navigateRoot("/login");
-    }else{
-      let loginData = JSON.parse(localStorage.getItem("login"));
-      this.xpassService.loginData.next(loginData);  
-      this.xpassService.token = localStorage.getItem("login_token");           
-      this.navCtrl.navigateRoot("/");
-    }
+    this.navCtrl.navigateRoot("/login");
+    // this.navCtrl.navigateRoot("/gidalo-transfer");
+    // if(!localStorage.getItem("login")) {
+    //   this.navCtrl.navigateRoot("/login");
+    // }else{
+    //   let loginData = JSON.parse(localStorage.getItem("login"));
+    //   this.xpassService.loginData.next(loginData);  
+    //   this.xpassService.token = localStorage.getItem("login_token");           
+    //   this.navCtrl.navigateRoot("/");
+    // }
   }
 
   async newtworkCheck() {

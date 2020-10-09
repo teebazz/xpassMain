@@ -13,7 +13,7 @@
   <form #form="ngForm" (ngSubmit) = "this.register(form)" method="POST">
     <ion-row>
       <ion-col size="6">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
             <ion-label position="stacked">First Name</ion-label>
             <ion-input ngModel name="first_name" type="text" clearInput class="ion-border-bottom" required #first_name = "ngModel" ></ion-input>
@@ -21,7 +21,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="6">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
             <ion-label position="stacked">Last Name</ion-label>
             <ion-input ngModel name="last_name" type="text" clearInput class="ion-border-bottom" required #last_name = "ngModel" ></ion-input>
@@ -37,7 +37,7 @@
         </ion-list>
       </ion-col> -->
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
             <ion-label position="stacked">Email Address</ion-label>
             <ion-input ngModel name="email" type="email" clearInput class="ion-border-bottom" required #email = "ngModel" ></ion-input>
@@ -45,7 +45,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
             <ion-label position="stacked">Phone Number</ion-label>
             <ion-input ngModel name="phone_number" type="text" clearInput class="ion-border-bottom" required #phone_number = "ngModel" ></ion-input>
@@ -53,7 +53,7 @@
         </ion-list>
       </ion-col>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
             <ion-label position="stacked">Password</ion-label>
             <ion-input ngModel name="password" type="password" clearInput class="ion-border-bottom" required #password = "ngModel" ></ion-input>

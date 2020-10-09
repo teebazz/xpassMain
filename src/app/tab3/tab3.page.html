@@ -21,7 +21,7 @@
     <form #createForm="ngForm" [formGroup]="formPay" id="createForm" (ngSubmit)="this.initateTransaction(createForm)" method="POST">
       <ion-row>
         <ion-col size="12" *ngIf="bankList.length > 0">
-          <ion-list class="line-input">
+          <ion-list class="line-input" mode="md">
             <ion-item>
               <ion-label position="stacked">Select Recipient Bank</ion-label>
               <!-- <ion-select  name="bank_id" formControlName="bank_id" [(ngModel)] = "bank_id" interface = "popover"   required>
@@ -75,7 +75,7 @@
           </ion-list>
         </ion-col>
         <ion-col size="12">
-          <ion-list class="line-input">
+          <ion-list class="line-input" mode="md">
             <ion-item>
               <ion-label position="stacked">Account Number</ion-label>
               <ion-input [(ngModel)] = "account_number" (ionChange) ="getAccount($event)" type="text" name="account_number" formControlName="account_number" required></ion-input>
@@ -84,7 +84,7 @@
           <span class="gt_name" *ngIf="gt_show == true"><i>Getting Account Details....</i></span>
         </ion-col>
         <ion-col size="12">
-          <ion-list class="line-input">
+          <ion-list class="line-input" mode="md">
             <ion-item>
               <ion-label position="stacked">Account Name</ion-label>
               <ion-input [(ngModel)] = "account_name" type="text" name="account_name" formControlName="account_name" readonly></ion-input>
@@ -92,9 +92,9 @@
           </ion-list>
         </ion-col>
         <ion-col size="12">
-          <ion-list class="line-input">
+          <ion-list class="line-input" mode="md">
             <ion-item>
-              <ion-label position="stacked">Amount</ion-label>
+              <ion-label position="stacked">Amount(₦)</ion-label>
               <ion-input  type="text" formControlName="amount" [readonly]="amountReadOnly ==  true"  name = "amount" id="amount" [(ngModel)] = "amount"  required  clearInput></ion-input>
             </ion-item>
           </ion-list>

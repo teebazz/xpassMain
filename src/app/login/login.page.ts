@@ -68,7 +68,7 @@ export class LoginPage implements OnInit {
         } else {
           // sets token in dataservice
           this.xpassService.loginData.next(resData.data);
-          localStorage.setItem("email", resData.data.email);
+          localStorage.setItem("email", body.username);
           localStorage.setItem("log_credentials", JSON.stringify(body));
           localStorage.setItem("login", JSON.stringify(resData.data));
           localStorage.setItem("login_token", (resData.data.auth_token));

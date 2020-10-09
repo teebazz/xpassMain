@@ -85,6 +85,22 @@ const routes: Routes = [
   {
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
+  {
+    path: 'account-settings',
+    loadChildren: () => import('./account-settings/account-settings.module').then( m => m.AccountSettingsPageModule)
+  },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+  {
+    path: 'share-earn',
+    loadChildren: () => import('./share-earn/share-earn.module').then( m => m.ShareEarnPageModule)
+  },
+  {
+    path: 'gidalo-transfer',
+    loadChildren: () => import('./gidalo-transfer/gidalo-transfer.module').then( m => m.GidaloTransferPageModule)
   }
 ];
 @NgModule({

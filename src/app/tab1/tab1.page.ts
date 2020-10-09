@@ -54,6 +54,9 @@ export class Tab1Page implements OnInit {
   gotoFundWallet(){
     this.router.navigate(['fund-wallet']);
   }
+  gotoShareEarn(){
+    this.router.navigate(['share-earn']);
+  }
 
   gotoTransaction(transaction){
     this.XpassService.transaction = transaction;

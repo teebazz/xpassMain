@@ -46,7 +46,7 @@ export class BuyServicePage implements OnInit {
     this.service.variation_list.filter(obj => {
       // console.log(obj);
       if (event.value.id == obj.id) {
-        this.amount = obj.amount;
+        this.amount =  (Math.round(obj.amount * 100) / 100).toFixed(2); ;
       }
 
     })
@@ -117,7 +117,7 @@ export class BuyServicePage implements OnInit {
         service_id: this.service.id,
         biller_identifier: this.biller_identifier,
         amount: this.amount,
-        variation_id: this.variation_code.id
+        variation_id: this.variation_code  ? this.variation_code.id : ''
       }
       console.log(body);
       let resData;

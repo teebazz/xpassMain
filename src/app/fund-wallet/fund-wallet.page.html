@@ -15,18 +15,28 @@
     </p>
     <ion-row>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item>
-            <ion-label position="stacked">Amount</ion-label>
+            <ion-label position="stacked">Amount(₦)</ion-label>
             <ion-input ngModel name="amount" type="text" clearInput class="ion-border-bottom" required #amount = "ngModel" ></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
       <ion-col size="12">
         <!-- <ion-item> -->
-        <ion-button type="submit" expand="block" class="m10">Proceed <ion-icon name="arrow-right"></ion-icon>
+        <ion-button type="submit" expand="block" class="m10">Fund with Card <ion-icon name="arrow-right"></ion-icon>
         </ion-button>
         <!-- </ion-item> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6>You can also fund your wallet by paying into your Gidalo Account</h6>
+        <ion-button shape="round" (click)="this.xpassService.getGidaloAccountNumber()" *ngIf="userDetails.account_number_setup == 'no'" fill="outline" size="small"  class="alter-background">Get Account Number</ion-button>
+        <h5 class="country" *ngIf="userDetails.account_number_setup == 'yes'">
+          <strong>Gidalo Account NO </strong> : {{userDetails.account_number}} <br>
+          <strong>Bank Name </strong> : Providus Bank
+        </h5>
       </ion-col>
     </ion-row>
   </form>

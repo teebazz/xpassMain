@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content  [fullscreen]="true" color="medium">
+  <div>
+    <ion-grid class="al_center">
+      <ion-row>
+        <ion-col size="12">
+          <img src="../../assets/images/share-online.svg" width="50">
+          <h3>Get cash backs when you refer your friends to use Gidalo</h3>
+          <!-- <h3>was successful</h3> -->
+        </ion-col>
+      </ion-row>  
+      <!-- <ion-col size="12">  
+        <ion-icon class="mark_success m_success" name="checkmark-circle-outline"></ion-icon> 
+      </ion-col>
+      <ion-row>
+        <ion-col size="12">  
+          <ion-button shape="round" (click)="generateReceipt()" fill="outline" class="close_btn">Share Receipt</ion-button>   
+        </ion-col>
+      </ion-row> -->
+      </ion-grid>
+  </div>
+</ion-content>
+<ion-footer >
+  <ion-toolbar class="m_footer">
+    <div class="ion-text-center m_bld" (click)="copyToBoard(share_code)">
+      <p class="c_center">Tap to copy code</p>
+      <strong>{{share_code}}</strong>
+    </div>
+    <ion-button class="m10" expand="block" shape="round" (click)="shareCode(share_code)">
+      Share
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

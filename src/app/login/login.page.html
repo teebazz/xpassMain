@@ -13,9 +13,9 @@
   <form #form="ngForm" (ngSubmit)="this.login(form)" method="POST">
     <ion-row>
       <ion-col size="12">
-        <ion-list class="line-input">
+        <ion-list class="line-input" mode="md">
           <ion-item class="m_item">
-            <ion-label position="stacked">Email Adress</ion-label>
+            <ion-label position="stacked">Phone Number or Email Address</ion-label>
             <ion-input [(ngModel)]="email" name="username" type="text" clearInput class="ion-border-bottom" required
               #username="ngModel"></ion-input>
           </ion-item>
